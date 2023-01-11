@@ -17,4 +17,8 @@ public static class Utilities {
 
         return Result;
     }
+
+    public static Vector3 ClampMagnitude(Vector3 V, float Min, float Max) {
+        return V * Mathf.Clamp(V.magnitude, Min, Max);
+    }
 }
