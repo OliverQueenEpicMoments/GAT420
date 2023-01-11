@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Utilities : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public static class Utilities {
+    public static Vector3 Wrap(Vector3 V, Vector3 Min, Vector3 Max) {
+        Vector3 Result = V;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (Result.x > Max.x) { Result.x = Min.x; }
+        else if (Result.x < Min.x) { Result.x = Max.x; }
+
+        if (Result.y > Max.y) { Result.y = Min.y; }
+        else if (Result.y < Min.y) { Result.y = Max.y; }
+
+        if (Result.z > Max.z) { Result.z = Min.z; }
+        else if (Result.z < Min.z) { Result.z = Max.z; }
+
+        return Result;
     }
 }
