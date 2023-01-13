@@ -17,6 +17,8 @@ public static class Steering {
         // Set point in front of agent at distance length 
         Vector3 Forward = agent.transform.forward * agent.WanderDistance;
 
+        Debug.DrawLine(agent.transform.position, Forward + Point, Color.red);
+
         Vector3 Force = CalculateSteering(agent, Forward + Point);
 
         return Force;
@@ -38,5 +40,27 @@ public static class Steering {
         Vector3 Force = Vector3.ClampMagnitude(Steer, agent.movement.MaxForce);
 
         return Force;
+    }
+
+    public static Vector3 Cohesion(Agent agent, GameObject[] Neighbors) { 
+        // Get center point of neighbors
+        Vector3 Center = Vector3.zero;
+        foreach (GameObject Neighbor in Neighbors) {
+            Center += Neighbor.transform.position;
+        }
+        Center /= Neighbors.Length;
+
+        // Steer towards center
+        Vector3 Force = CalculateSteering(agent, Center - agent.transform.position);
+
+        return Force;
+    }
+
+    public static Vector3 Separation(Agent agent, GameObject[] Neighbors, float Radius) {   
+        return Vector3.zero;
+    }
+
+    public static Vector3 Allignment(Agent agent, GameObject[] Neighbors) {
+        return Vector3.zero;
     }
 }
