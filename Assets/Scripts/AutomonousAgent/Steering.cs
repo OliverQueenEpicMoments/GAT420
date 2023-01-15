@@ -6,16 +6,16 @@ using UnityEngine;
 public static class Steering {
     public static Vector3 Wander(AutonomousAgent agent) {
         // Randomly adjusts angle +/- displacement
-        agent.WanderAngle = agent.WanderAngle + UnityEngine.Random.Range(-agent.WanderDisplacement, agent.WanderDisplacement);
+        agent.WanderAngle = agent.WanderAngle + UnityEngine.Random.Range(-agent.Data.WanderDisplacement, agent.Data.WanderDisplacement);
 
         // Create rotation quaternion around y-axis (up)
         Quaternion Rotation = Quaternion.AngleAxis(agent.WanderAngle, Vector3.up);
 
         // Calculate point on circle radius 
-        Vector3 Point = Rotation * (Vector3.forward * agent.WanderRadius);
+        Vector3 Point = Rotation * (Vector3.forward * agent.Data.WanderRadius);
 
         // Set point in front of agent at distance length 
-        Vector3 Forward = agent.transform.forward * agent.WanderDistance;
+        Vector3 Forward = agent.transform.forward * agent.Data.WanderDistance;
 
         Debug.DrawLine(agent.transform.position, Forward + Point, Color.red);
 
@@ -57,10 +57,39 @@ public static class Steering {
     }
 
     public static Vector3 Separation(Agent agent, GameObject[] Neighbors, float Radius) {   
-        return Vector3.zero;
+        Vector3 Separation = Vector3.zero;
+
+		// Accumulate separation vector of neighbors
+		foreach (GameObject Neighbor in Neighbors) {
+            // Create separation direction (neighbor position <- agent position)
+            Vector3 Direction = (agent.transform.position - Neighbor.transform.position);
+
+            if (Direction.magnitude < Radius) {
+                // Scale direction by distance (closer = stronger)
+                Separation += Direction / Direction.sqrMagnitude;
+			}
+		}
+        // Steer towards separation
+        Vector3 Force = CalculateSteering(agent, Separation);
+
+		return Force;
     }
 
     public static Vector3 Allignment(Agent agent, GameObject[] Neighbors) {
-        return Vector3.zero;
+        Vector3 AverageVelocity = Vector3.zero;
+
+        // Accumulate velocity of neighbors (velocity = forward direction movement)
+        foreach (GameObject Neighbor in Neighbors) {
+            // Need to get the Agent component of the game object and then movement velocity
+            AverageVelocity = Neighbor.GetComponent<Agent>().movement.Velocity;
+		}
+
+		// Calculate the average by dividing the average velocity by the number of neighbors
+        AverageVelocity /= Neighbors.Length;
+
+        // Steer towards the average velocity of the neighbors 
+        Vector3 Force = CalculateSteering(agent, AverageVelocity);
+
+		return Force;
     }
 }
