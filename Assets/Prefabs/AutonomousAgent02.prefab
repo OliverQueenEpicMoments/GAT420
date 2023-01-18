@@ -95,13 +95,13 @@ GameObject:
   - component: {fileID: 5174370828579018522}
   - component: {fileID: 5174370828579018523}
   - component: {fileID: 5174370828579018516}
-  - component: {fileID: -3490276201231347386}
+  - component: {fileID: 7258890228301377613}
   - component: {fileID: 5174370828579018518}
   - component: {fileID: 5174370828579018519}
   - component: {fileID: 5174370828579018512}
   m_Layer: 0
-  m_Name: Agent01
-  m_TagString: Agent1
+  m_Name: AutonomousAgent02
+  m_TagString: Agent2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,8 +136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   perception: {fileID: 5174370828579018516}
   movement: {fileID: 5174370828579018523}
-  FlockPerception: {fileID: -3490276201231347386}
-  Data: {fileID: 11400000, guid: ec6405a764c61d847afa7afe765ac24b, type: 2}
+  FlockPerception: {fileID: 7258890228301377613}
+  Data: {fileID: 11400000, guid: 7a95b2825355e354eb76217c41fc334e, type: 2}
 --- !u!114 &5174370828579018523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,8 +151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 5
-  MinSpeed: 2
-  MaxForce: 100
+  MinSpeed: 5
+  MaxForce: 10
 --- !u!114 &5174370828579018516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,9 +166,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Distance: 5
-  MaxAngle: 90
-  TagName: Agent2
---- !u!114 &-3490276201231347386
+  MaxAngle: 180
+  TagName: Agent1
+--- !u!114 &7258890228301377613
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 20
   MaxAngle: 180
-  TagName: Agent1
+  TagName: Agent2
 --- !u!33 &5174370828579018518
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -211,7 +211,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 05eb55d19ac022c48872e29ba6293e17, type: 2}
+  - {fileID: 2100000, guid: 857504246181dc647a4e60db66dfd2a1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

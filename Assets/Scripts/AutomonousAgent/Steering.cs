@@ -81,7 +81,7 @@ public static class Steering {
         // Accumulate velocity of neighbors (velocity = forward direction movement)
         foreach (GameObject Neighbor in Neighbors) {
             // Need to get the Agent component of the game object and then movement velocity
-            AverageVelocity = Neighbor.GetComponent<Agent>().movement.Velocity;
+            AverageVelocity += Neighbor.GetComponent<Agent>().movement.Velocity;
 		}
 
 		// Calculate the average by dividing the average velocity by the number of neighbors
