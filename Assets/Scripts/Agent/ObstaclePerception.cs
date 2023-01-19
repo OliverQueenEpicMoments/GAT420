@@ -14,6 +14,7 @@ public class ObstaclePerception : MonoBehaviour {
 	public bool IsObstacleInFront() {
 		// Check if object is in front fo agent
 		Ray ray = new Ray(RaycastTransform.position, RaycastTransform.forward);
+
 		Debug.DrawRay(ray.origin, ray.direction * Distance, Color.green);
 		return Physics.SphereCast(ray, 2, Distance, layermask);
 	}

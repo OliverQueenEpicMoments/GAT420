@@ -36,7 +36,6 @@ public static class Utilities {
             Result.Add(Quaternion.AngleAxis(+AngleOffset * I, Vector3.up) * Vector3.forward);
             Result.Add(Quaternion.AngleAxis(-AngleOffset * I, Vector3.up) * Vector3.forward);
         }
-
 		return Result.ToArray();
     }
 }

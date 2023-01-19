@@ -9,13 +9,13 @@ public abstract class Perception : MonoBehaviour {
 
     public abstract GameObject[] GetGameObjects();
 
-    public int CompareDistance(GameObject A, GameObject B) {
-        float squaredRangeA = (A.transform.position - transform.position).sqrMagnitude;
-        float squaredRangeB = (B.transform.position - transform.position).sqrMagnitude;
-        return squaredRangeA.CompareTo(squaredRangeB);
-    }
-
 	public void SortByDistance(List<GameObject> GameObjects) {
 		GameObjects.Sort(CompareDistance);
 	}
+
+    public int CompareDistance(GameObject A, GameObject B) {
+        float SquaredRangeA = (A.transform.position - transform.position).sqrMagnitude;
+        float SquaredRangeB = (B.transform.position - transform.position).sqrMagnitude;
+        return SquaredRangeA.CompareTo(SquaredRangeB);
+    }
 }

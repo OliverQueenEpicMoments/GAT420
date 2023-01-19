@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class RaycastPerception : Perception {
 	public Transform RaycastTransform;
-	[Range(0, 50)] public int NumRaycast = 2;
+	[Range(2, 50)] public int NumRaycast = 2;
 
 	public override GameObject[] GetGameObjects() {
 		List<GameObject> Result = new List<GameObject>();
 
 		Vector3[] Directions = Utilities.GetDirectionsInCircle(NumRaycast, MaxAngle);
-		foreach (Vector3 Direction in Directions) {
+		foreach (var Direction in Directions) {
 			// Cast ray from transform position towards direction
 			Ray ray = new Ray(RaycastTransform.position, RaycastTransform.rotation * Direction);
 			if (Physics.Raycast(ray, out RaycastHit raycasthit, Distance)) {
