@@ -171,7 +171,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cff4ad23d7f6594787239b2a6429eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startNode: {fileID: 0}
+  perception: {fileID: 0}
+  movement: {fileID: 5174370828579018523}
+  StartNode: {fileID: 0}
 --- !u!54 &-2728248650478121686
 Rigidbody:
   m_ObjectHideFlags: 0

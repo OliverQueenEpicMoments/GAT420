@@ -15,9 +15,9 @@ public class Movement : MonoBehaviour {
         Acceleration += Force;
     }
 
-    public void MoveTowards(Vector3 target) {
-        Vector3 direction = (target - transform.position).normalized;
-        ApplyForce(direction * MaxForce);
+    public void MoveTowards(Vector3 Target) {
+        Vector3 Direction = (Target - transform.position).normalized;
+        ApplyForce(Direction * MaxForce);
     }
 
     void LateUpdate() {
@@ -29,13 +29,5 @@ public class Movement : MonoBehaviour {
             transform.rotation = Quaternion.LookRotation(Velocity);
         }
         Acceleration = Vector3.zero;
-    }
-
-    void Start() {
-        
-    }
-
-    void Update() {
-        
     }
 }

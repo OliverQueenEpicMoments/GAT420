@@ -12,11 +12,19 @@ public class WaypointNavNode : NavNode {
     }
 
     private void OnTriggerEnter(Collider other) {
-        
+        if (other.gameObject.TryGetComponent<NavAgent>(out NavAgent NavAgent)) {
+            if (NavAgent.TargetNode == this) {
+                NavAgent.TargetNode = Nodes[Random.Range(0, Nodes.Length)];
+            }
+        }
     }
 
     private void OnTriggerStay(Collider other) {
-        
+        if (other.gameObject.TryGetComponent<NavAgent>(out NavAgent NavAgent)) {
+            if (NavAgent.TargetNode == this) {
+                NavAgent.TargetNode = Nodes[Random.Range(0, Nodes.Length)];
+            }
+        }
     }
 
     private void OnDrawGizmosSelected() {
