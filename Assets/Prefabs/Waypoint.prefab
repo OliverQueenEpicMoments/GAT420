@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8726512521919711919}
   - component: {fileID: 8726512521919711918}
   - component: {fileID: 8726512521919711905}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Waypoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,5 +110,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a75d0078713ce6c4cb7a2c87f54cadbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Nodes: []
+  Neighbors: []
   Radius: 1
