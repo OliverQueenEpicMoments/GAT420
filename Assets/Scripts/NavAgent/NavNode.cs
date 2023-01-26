@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class NavNode : MonoBehaviour {
 	[SerializeField] public List<NavNode> Neighbors = new List<NavNode>();
 	[SerializeField, Range(1, 10)] public float Radius = 1;
 
-	private void OnValidate() {
+    public NavNode Parent { get; set; } = null;
+    public bool Visited { get; set; } = false;
+    public float Cost { get; set; } = float.MaxValue;
+
+    private void OnValidate() {
 		GetComponent<SphereCollider>().radius = Radius;
 	}
 
@@ -19,7 +24,26 @@ public class NavNode : MonoBehaviour {
         return (Nodes == null) ? null : Nodes[Random.Range(0, Nodes.Length)];
     }
 
-	private void OnDrawGizmosSelected() {
+    public static void ShowNodes() {
+        var Nodes = GetNodes();
+        Nodes.ToList().ForEach(node => node.GetComponent<Renderer>().enabled = true);
+    }
+
+    public static void HideNodes() {
+        var Nodes = GetNodes();
+        Nodes.ToList().ForEach(node => node.GetComponent<Renderer>().enabled = false);
+    }
+
+    public static void ResetNodes() {
+        var Nodes = GetNodes();
+        Nodes.ToList().ForEach(Node => {
+            Node.Visited = false;
+            Node.Parent = null;
+            Node.Cost = float.MaxValue;
+        });
+    }
+
+    private void OnDrawGizmosSelected() {
 		Gizmos.color = Color.yellow;
 		Gizmos.DrawWireSphere(transform.position, Radius);
 
