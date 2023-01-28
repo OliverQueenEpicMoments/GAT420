@@ -20,6 +20,10 @@ public class Movement : MonoBehaviour {
         ApplyForce(Direction * MaxForce);
     }
 
+    public void Stop() { 
+        Velocity = Vector3.zero;
+    }
+
     void LateUpdate() {
         Velocity += Acceleration * Time.deltaTime;
         Velocity = Utilities.ClampMagnitude(Velocity, MinSpeed, MaxSpeed);

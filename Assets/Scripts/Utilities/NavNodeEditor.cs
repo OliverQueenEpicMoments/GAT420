@@ -11,8 +11,6 @@ public class NavNodeEditor : MonoBehaviour {
 	[SerializeField] LayerMask layerMask;
 
 	private Vector3 position = Vector3.zero;
-	private Vector3 nodeCameraDirection = Vector3.zero;
-	private Vector3 activeCameraDirection = Vector3.zero;
 	private bool spawnable = false;
 	private NavNode navNode = null;
 	private NavNode activeNavNode = null;
@@ -79,8 +77,6 @@ public class NavNodeEditor : MonoBehaviour {
 				DestroyImmediate(navNode.gameObject);
 			}
 		}
-		activeCameraDirection = (activeNavNode != null) ? (scene.camera.transform.position - activeNavNode.transform.position).normalized : Vector3.zero;
-		nodeCameraDirection = (navNode != null) ? (scene.camera.transform.position - navNode.transform.position).normalized : Vector3.zero;
 	}
 
 	private void OnDrawGizmos()	{
@@ -90,13 +86,13 @@ public class NavNodeEditor : MonoBehaviour {
 		}
 
 		if (navNode != null && navNode != activeNavNode) {
-			Gizmos.DrawIcon(navNode.transform.position + nodeCameraDirection, "nav_nodeA.png", true, Color.green);
+			Gizmos.DrawIcon(navNode.transform.position + Vector3.up, "nav_nodeA.png", true, Color.green);
 			Gizmos.color = Color.green;
 			Gizmos.DrawWireSphere(navNode.gameObject.transform.position, navNode.Radius);
 		}
 
 		if (activeNavNode != null) {
-			Gizmos.DrawIcon(activeNavNode.transform.position + activeCameraDirection, "nav_nodeA.png", true, Color.red);
+			Gizmos.DrawIcon(activeNavNode.transform.position + Vector3.up, "nav_nodeA.png", true, Color.red);
 			Gizmos.color = Color.red;
 			Gizmos.DrawWireSphere(activeNavNode.gameObject.transform.position, activeNavNode.Radius * 1.5f);
 			Gizmos.DrawLine(activeNavNode.gameObject.transform.position, position);
