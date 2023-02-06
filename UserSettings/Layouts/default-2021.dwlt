@@ -358,11 +358,11 @@ MonoBehaviour:
     - e00: 0.6459054
       e01: 0
       e02: 0
-      e03: 35.81778
+      e03: 21.81778
       e10: 0
       e11: 0.6459054
       e12: 0
-      e13: -2.2952652
+      e13: 2.081894
       e20: 0
       e21: 0
       e22: 1
@@ -450,7 +450,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 438.66663
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
@@ -497,22 +497,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Characters/Agent01
+    - Assets/Prefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Characters/Agent01
+  - Assets/Prefabs
   m_LastFoldersGridSize: 96
   m_LastProjectPath: C:\Users\Joshua\OneDrive\Second Year\Winter\AI\UnityAI
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 111}
-    m_SelectedIDs: 86b50000
-    m_LastClickedID: 46470
-    m_ExpandedIDs: 00000000b8640000c8640000da64000000ca9a3b
+    scrollPos: {x: 0, y: 72.33331}
+    m_SelectedIDs: 3e660000
+    m_LastClickedID: 26174
+    m_ExpandedIDs: 000000001c6600001e66000030660000ba67000062680000e887000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -540,7 +540,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000b8640000
+    m_ExpandedIDs: 000000001c6600001e660000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -568,7 +568,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000646b0000
+    m_ExpandedInstanceIDs: c6230000646b0000946600004e730000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -732,9 +732,9 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: -141, y: 149}
+      snapOffset: {x: 98.666664, y: 0}
       snapOffsetDelta: {x: 0, y: 0}
-      snapCorner: 1
+      snapCorner: 0
       id: unity-grid-and-snap-toolbar
       index: 1
       layout: 1
@@ -765,7 +765,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 24.666666}
+      snapOffset: {x: 0, y: 25.333334}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-transform-toolbar
@@ -946,9 +946,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 19.153135, y: -6.448263, z: 34.900585}
+    m_Target: {x: 10.035398, y: -9.642146, z: 16.500376}
     speed: 2
-    m_Value: {x: 19.153135, y: -6.448263, z: 34.900585}
+    m_Value: {x: 10.035398, y: -9.642146, z: 16.500376}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -995,20 +995,20 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.114655614, y: 0.15872751, z: -0.01852525, w: 0.9804964}
+    m_Target: {x: 0.19166996, y: 0.32234678, z: -0.06686448, w: 0.92468655}
     speed: 2
-    m_Value: {x: 0.11465236, y: 0.15872301, z: -0.018524725, w: 0.9804686}
+    m_Value: {x: 0.19165453, y: 0.32232085, z: -0.066859104, w: 0.92461216}
   m_Size:
-    m_Target: 18.68657
+    m_Target: 15.3619
     speed: 2
-    m_Value: 18.68657
+    m_Value: 15.3619
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_CameraSettings:
-    m_Speed: 0.9960452
-    m_SpeedNormalized: 0.4955001
+    m_Speed: 1.0000247
+    m_SpeedNormalized: 0.49749985
     m_SpeedMin: 0.01
     m_SpeedMax: 2
     m_EasingEnabled: 1
@@ -1056,10 +1056,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 53.333313}
-      m_SelectedIDs: 8cb50000
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 32fbffffea5a00002c5b0000
+      m_ExpandedIDs: 32fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 

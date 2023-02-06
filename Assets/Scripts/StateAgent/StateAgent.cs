@@ -13,6 +13,8 @@ public class StateAgent : Agent {
         statemachine.AddState(new IdleState(this));
         statemachine.AddState(new PatrolState(this));
         statemachine.AddState(new ChaseState(this));
+        statemachine.AddState(new WanderState(this));
+        statemachine.AddState(new AttackState(this));
         statemachine.StartState(nameof(IdleState));
     }
 
@@ -22,7 +24,6 @@ public class StateAgent : Agent {
         if (navigation.targetNode != null) {
             movement.MoveTowards(navigation.targetNode.transform.position);
         }
-
 		animator.SetFloat("Speed", movement.Velocity.magnitude);
     }
 
