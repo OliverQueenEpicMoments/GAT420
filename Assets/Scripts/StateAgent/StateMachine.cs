@@ -24,6 +24,14 @@ public class StateMachine {
 				}
 			}
 		}
+		// Check for any transitions
+		foreach (var Transition in AnyTransitions) { 
+			if (Transition.Key.ToTransition()) {
+				StartState(Transition.Value.Name);
+				break;
+			}
+		}
+
 		CurrentState?.OnUpdate();
 	}
 

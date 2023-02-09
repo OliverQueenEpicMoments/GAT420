@@ -18,6 +18,15 @@ public class AttackState : State {
 		AnimationClip Clip = Clips.FirstOrDefault<AnimationClip>(Clip => Clip.name == "Zombie Attack");
 
 		Timer = (Clip != null) ? Clips.Length : 1;
+
+		var Colliders = Physics.OverlapSphere(Owner.transform.position, 2);
+		foreach (var Collider in Colliders) {
+			if (Collider.gameObject == Owner.gameObject || Collider.gameObject.CompareTag(Owner.gameObject.tag)) continue;
+
+			if (Collider.gameObject.TryGetComponent<StateAgent>(out var Component)) {
+				Component.Health.value -= Random.Range(20, 50);
+			}
+		}
 	}
 
 	public override void OnExit() {
