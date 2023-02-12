@@ -40,13 +40,25 @@ public class StateAgent : Agent {
 		Condition AtDestinationCondition = new BoolCondition(AtDestination, true);
 
 		// Create Transitions
-		statemachine.AddTransition(nameof(IdleState), new Transition(new Condition[] { TimerExpiredCondition }), nameof(PatrolState));
 		statemachine.AddTransition(nameof(IdleState), new Transition(new Condition[] { EnemySeenCondition, HealthOkCondition }), nameof(ChaseState));
 		statemachine.AddTransition(nameof(IdleState), new Transition(new Condition[] { EnemySeenCondition, HealthLowCondition }), nameof(EvadeState));
+		statemachine.AddTransition(nameof(IdleState), new Transition(new Condition[] { TimerExpiredCondition }), nameof(PatrolState));
 
 		statemachine.AddTransition(nameof(PatrolState), new Transition(new Condition[] { TimerExpiredCondition }), nameof(WanderState));
 		statemachine.AddTransition(nameof(PatrolState), new Transition(new Condition[] { EnemySeenCondition, HealthOkCondition }), nameof(ChaseState));
 		statemachine.AddTransition(nameof(PatrolState), new Transition(new Condition[] { EnemySeenCondition, HealthLowCondition }), nameof(EvadeState));
+
+		statemachine.AddTransition(nameof(ChaseState), new Transition(new Condition[] { EnemyNotSeenCondition, TimerExpiredCondition }), nameof(IdleState));
+		statemachine.AddTransition(nameof(ChaseState), new Transition(new Condition[] { new FloatCondition(EnemyDistance, Condition.Predicate.LESS_EQUAL, 2.5f) }), nameof(AttackState));
+		statemachine.AddTransition(nameof(ChaseState), new Transition(new Condition[] { EnemySeenCondition, HealthLowCondition }), nameof(EvadeState));
+
+		statemachine.AddTransition(nameof(WanderState), new Transition(new Condition[] { AtDestinationCondition }), nameof(IdleState));
+		statemachine.AddTransition(nameof(WanderState), new Transition(new Condition[] { new FloatCondition(EnemyDistance, Condition.Predicate.LESS_EQUAL, 2.5f) }), nameof(AttackState));
+		statemachine.AddTransition(nameof(WanderState), new Transition(new Condition[] { EnemySeenCondition, HealthLowCondition }), nameof(EvadeState));
+
+		statemachine.AddTransition(nameof(EvadeState), new Transition(new Condition[] { AtDestinationCondition }), nameof(IdleState));
+
+		statemachine.AddTransition(nameof(AttackState), new Transition(new Condition[] { AnimationDoneCondition }), nameof(ChaseState));
 
 		statemachine.AddAnyTransition(new Transition(new Condition[] { DeathCondition }), nameof(DeathState));
 
@@ -61,7 +73,7 @@ public class StateAgent : Agent {
 		EnemyDistance.value = (EnemySeen) ? (Vector3.Distance(transform.position, Percieved[0].transform.position)) : float.MaxValue;
 		Timer.value -= Time.deltaTime;
 		AtDestination.value = ((movement.Destination - transform.position).sqrMagnitude <= 1);
-		AnimationDone.value = (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0));
+		AnimationDone.value = (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.8f && !animator.IsInTransition(0));
 
 		statemachine.Update();
         if (navigation.targetNode != null) {

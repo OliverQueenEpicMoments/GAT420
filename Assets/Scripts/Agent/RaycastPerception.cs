@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RaycastPerception : Perception {
@@ -24,6 +25,9 @@ public class RaycastPerception : Perception {
 				}
 			}
 		}
+		// Remove duplicates
+		Result = Result.Distinct().ToList();
+
 		// Sort results by distance
 		Result.Sort(CompareDistance);
 

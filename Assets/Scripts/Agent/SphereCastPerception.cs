@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SphereCastPerception : Perception {
@@ -32,6 +33,9 @@ public class SphereCastPerception : Perception {
 				Debug.DrawRay(ray.origin, ray.direction * Distance);
 			}
 		}
+		// Remove duplicates
+		Result = Result.Distinct().ToList();
+
 		// Sort results by distance
 		Result.Sort(CompareDistance);
 
